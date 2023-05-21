@@ -266,6 +266,78 @@ class Graf {
     ],
   };
 
+  #inputData3 = {
+    lines: [
+      {
+        line: { color: 'red' },
+        stations: [
+          { x: 350, y: 600 },
+          { x: 350, y: 540 },
+          { x: 350, y: 400 },
+          { x: 350, y: 350 },
+        ],
+      },
+      {
+        line: { color: 'blue' },
+        stations: [
+          { x: 330, y: 400 },
+          { x: 310, y: 370 },
+          { x: 300, y: 350 },
+          { x: 300, y: 300 },
+          { x: 330, y: 250 },
+        ],
+      },
+      {
+        line: { color: 'green' },
+        stations: [
+          { x: 370, y: 400 },
+          { x: 490, y: 300 },
+          { x: 370, y: 250 },
+        ],
+      },
+      {
+        line: { color: 'yellow' },
+        stations: [
+          { x: 350, y: 250 },
+          { x: 350, y: 200 },
+          { x: 350, y: 100 },
+        ],
+      },
+      {
+        line: { color: 'gray' },
+        stations: [
+          { x: 150, y: 170 },
+          { x: 200, y: 120 },
+          { x: 350, y: 70 },
+          { x: 400, y: 60 },
+          { x: 450, y: 50 },
+        ],
+      },
+    ],
+    links: [
+      {
+        st1: 'l0_s2',
+        st2: 'l1_s0',
+      },
+      {
+        st1: 'l0_s2',
+        st2: 'l2_s0',
+      },
+      {
+        st1: 'l2_s2',
+        st2: 'l3_s0',
+      },
+      {
+        st1: 'l1_s4',
+        st2: 'l3_s0',
+      },
+      {
+        st1: 'l3_s2',
+        st2: 'l4_s2',
+      },
+    ],
+  };
+
   constructor() {
     let canvas = document.getElementById('metro-map-canvas');
     canvas.width = canvas.clientWidth;
@@ -279,6 +351,7 @@ class Graf {
 
     if (map == 'map1') inputData = this.#inputData1;
     if (map == 'map2') inputData = this.#inputData2;
+    if (map == 'map3') inputData = this.#inputData3;
 
     this.#subway = new Subway(ctx, inputData.lines, inputData.links);
   }

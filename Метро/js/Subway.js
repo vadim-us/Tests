@@ -147,10 +147,10 @@ class Subway {
         console.log(linkSt);
 
         // сортировка по весу
-        linkSt.sort((a, b) => a.Path.weight - b.Path.weight);
+        // linkSt.sort((a, b) => a.Path.weight - b.Path.weight);
 
         // добавление ближайшей на линии
-        nearestTransferStations.push(linkSt[0]);
+        nearestTransferStations = nearestTransferStations.concat(linkSt);
 
         /* if (linkSt.length == 1) {
           singleLinkStation = singleLinkStation.concat(linkSt);
@@ -188,13 +188,16 @@ class Subway {
     path.push(station);
     console.log('path', path);
     this.DrawPath(path);
-    document.getElementById('path').value = path.map((a) => a.Id);
+
+    path = path.map((a) => a.Id);
+    console.log(path);
+    document.getElementById('path').value = path.join(' --> ');
   }
 
   ResetPath() {
     // сброс просчитанных путей
     this.#allStations.forEach((station) => {
-      station.Path = { visited: false, weight: Infinity, path: [] };
+      station.Path = { /*visited: false,*/ weight: Infinity, path: [] };
     });
   }
 
@@ -203,18 +206,18 @@ class Subway {
     this.ResetPath();
     current.Path = { weight: 0 };
 
-    let unVisitedStations = this.#allStations;
+    // let unVisitedStations = this.#allStations;
 
     let queue = [];
 
     while (true) {
-      current.Path = { visited: true };
+      // current.Path = { visited: true };
 
-      unVisitedStations = unVisitedStations.filter(
-        (station) => station != current
-      );
+      // unVisitedStations = unVisitedStations.filter(
+      //   (station) => station != current
+      // );
 
-      console.log('current:', current.Id, current);
+      console.log('\n! current:', current.Id, current);
       // console.log('unVisitedStations', unVisitedStations);
 
       let possibleWays = [];
@@ -257,7 +260,7 @@ class Subway {
               path: current.Path.path.concat(current),
             };
             queue.push(way.station);
-            console.log('add to queue');
+            console.log('add to queue:', way.station);
           }
         });
         // console.log('possibleMove:', movesId.join(', '), possibleMove);

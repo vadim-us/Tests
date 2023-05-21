@@ -14,14 +14,14 @@ class Station {
   }
 
   #path = {
-    visited: false,
+    // visited: false,
     weight: Infinity,
     path: [],
   };
 
-  set Path({ weight, path, visited }) {
+  set Path({ weight, path /*, visited*/ }) {
     // console.log({ weight, path, visited });
-    if (visited != undefined) this.#path.visited = visited;
+    // if (visited != undefined) this.#path.visited = visited;
 
     if (weight != undefined) this.#path.weight = weight;
 
@@ -29,7 +29,7 @@ class Station {
   }
   get Path() {
     return {
-      visited: this.#path.visited,
+      // visited: this.#path.visited,
       weight: this.#path.weight,
       path: this.#path.path,
     };

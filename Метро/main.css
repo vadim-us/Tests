@@ -4,6 +4,8 @@ body {
 canvas#metro-map-canvas {
   width: 800px;
   height: 700px;
+  margin: 0 auto;
+  display: block;
 }
 canvas#myCanvas {
   width: 600px;
